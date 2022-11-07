@@ -45,14 +45,6 @@ class RelatorioController extends Controller
                 $niveis[] = $dadosNivel;
             }
 
-
-
-//            $frase = $this->frase->whereNotIn('id', $respostas_corretas)->where('nivel', $nivel_atual)->inRandomOrder()->first();
-//
-//            if (!$frase) {
-//                return response()->json(['success' => false, 'message' => 'Parabéns, você completou o desafio da leitura!'], 500);
-//            }
-
             return response()->json(['success' => true, 'niveis' => $niveis]);
         } catch (\Exception $exception) {
             return response()->json(['success' => false, 'message' => $exception->getMessage()], 500);

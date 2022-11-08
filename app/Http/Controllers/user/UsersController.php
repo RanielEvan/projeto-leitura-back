@@ -26,13 +26,24 @@ class UsersController extends Controller
         }
     }
 
+    public function buscarCidades(Request $request)
+    {
+        try {
+            $users = $this->user->findAll();;
+
+            return response()->json(['success' => true, 'users' => $users]);
+        } catch (\Exception $exception) {
+            return response()->json(['success' => false, 'message' => $exception->getMessage()], 500);
+        }
+    }
+
     public function enviarCriarUser(Request $request)
     {
         try {
             $dados = $request->all();
             $user = $this->user->create($dados);
 
-            return response()->json(['success' => true, 'user' => $user]);
+            return response()->json(['success' => true, 'usuario' => $user]);
         } catch (\Exception $exception) {
             return response()->json(['success' => false, 'message' => $exception->getMessage()], 500);
         }
